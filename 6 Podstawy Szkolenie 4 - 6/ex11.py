@@ -22,3 +22,10 @@ for i in range(lenght):
         print(blank_line)
     else:
         print(full_line)
+
+# part 3
+
+lenght = 5
+
+for i in range(0, lenght):
+    print(" " * (lenght- i) +  "*" * i + "*" * (i+1))
