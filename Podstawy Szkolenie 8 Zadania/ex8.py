@@ -14,7 +14,7 @@ class Solution:
             self.reversed_dict.update({value: key})
 
     def save_result(self):
-        with open("dumped.json", "w") as file:
+        with open("output.json", "w") as file:
             json.dump(self.reversed_dict, file, indent=4)
 
 
