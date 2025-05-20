@@ -32,7 +32,8 @@ class Program:
             for idx, pixel in enumerate(value):
                 self.data_parsed[key][idx] = int(pixel)
 
-
+        for value in self.data_parsed.values():
+            self.pixel_lists.append(value)
 
     def point_most_bright_dark_pixels(self):
         for key, value in self.data_parsed.items():
@@ -48,12 +49,11 @@ class Program:
         print(f"most bright pixel value is : {self.most_bright_pixel_value} at line : {self.most_bright_pixel_row}")
         print(f"most dark pixel value is : {self.most_dark_pixel_value} at line : {self.most_dark_pixel_row}")
 
+
+
     def point_contrast_pixels(self):
 
         diff = 128
-
-        for value in self.data_parsed.values():
-            self.pixel_lists.append(value)
 
 
         for row in range(len(self.pixel_lists)):
@@ -100,12 +100,32 @@ class Program:
         print(f"contrast pixels : {self.contrast_pixels}")
 
 
+    def point_longest_line(self):
+
+        brightness = self.pixel_lists[0][0]
+        temp_len = 0
+        max_len = 0
+
+        for pixel in range(0, 300):
+            for row in self.pixel_lists:
+                pix = row[pixel]
+                if brightness == pix:
+                    temp_len += 1
+                else:
+                    brightness = pix
+                    if temp_len > max_len:
+                        max_len = temp_len
+                    temp_len = 0
+
+        print(max_len)
+
 
 def main():
     program = Program("dane.txt")
     program.parse_data()
-    program.point_most_bright_dark_pixels()
-    program.point_contrast_pixels()
+    # program.point_most_bright_dark_pixels()
+    # program.point_contrast_pixels()
+    program.point_longest_line()
 
 if __name__ == "__main__":
     main()
