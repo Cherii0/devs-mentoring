@@ -3,10 +3,10 @@
 class Program:
 
     def __init__(self, path):
+        
         self.file_path = path
         self.data_raw = []
         self.data_parsed = {}
-        self.data_filtered = []
         self.contrast_pixels = 0
         self.pixel_lists = []
 
@@ -115,7 +115,7 @@ class Program:
                     brightness = pix
                     if temp_len > max_len:
                         max_len = temp_len
-                    temp_len = 0
+                    temp_len = 1
 
         print(max_len)
 
@@ -123,8 +123,8 @@ class Program:
 def main():
     program = Program("dane.txt")
     program.parse_data()
-    # program.point_most_bright_dark_pixels()
-    # program.point_contrast_pixels()
+    program.point_most_bright_dark_pixels()
+    program.point_contrast_pixels()
     program.point_longest_line()
 
 if __name__ == "__main__":
