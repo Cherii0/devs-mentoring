@@ -13,8 +13,7 @@ class Solution:
     def convert(self):
         self.data_parsed = self.data_raw.replace("\n", " ")
         self.data_parsed = self.data_parsed.split(" ")
-        print(self.data_parsed)
-        print(len(self.data_parsed))
+
 
         remove_elem = []
 
