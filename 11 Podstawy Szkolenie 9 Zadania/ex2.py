@@ -20,8 +20,8 @@ class Vehicle:
 
 def main():
 
-    car = Vehicle("car", 300000, 200)
-    kilometers = 100
+    car = Vehicle("car", 300000.0, 200)
+    kilometers = 100.0
 
     print(f"{car} have {car.get_mileage()} kilometers mileage")
     car.update_mileage(kilometers)
