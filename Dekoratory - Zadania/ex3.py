@@ -1,27 +1,20 @@
-from functools import wraps
-
 
 class Counter:
     func_dict = dict()
 
     @staticmethod
     def update_func(func):
-        func = func.__ne__
         if func in Counter.func_dict.keys():
-            Counter.func_dict[func] += 1
-        else:
-            Counter.func_dict[func] = 1
+            Counter.func_dict[func]["counter"] += 1
 
-    @staticmethod
-    def __init__(func):
-        pass
-
-
+    def __init__(self, func):
+        # once called while assign decorator
+        Counter.func_dict[self] = {"func_name" : func.__name__, "counter" : 0}
 
     def __call__(self):
         Counter.update_func(self)
-        for key, value in Counter.func_dict.items():
-            print(f"{key} : {value}")
+        for value in Counter.func_dict.values():
+            print(f"{value["func_name"]} : {value["counter"]}")
 
 
 @Counter
@@ -40,6 +33,7 @@ def main():
     func2()
     func2()
     func2()
+
 
 
 if __name__ == "__main__":
