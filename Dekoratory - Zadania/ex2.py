@@ -1,4 +1,13 @@
 
+class OuterLines:
+    def __init__(self, func):
+        self.func = func
+
+    def __call__(self, *, text):
+        line = "*"
+        print(line * 50)
+        self.func(text=text)
+        print(line * 50)
 
 def outer_lines(func):
     def inner_func(*, text):
@@ -8,7 +17,8 @@ def outer_lines(func):
         print(line * 50)
     return inner_func
 
-@outer_lines
+#@outer_lines
+@OuterLines
 def show_text(*, text):
     print(text)
 
